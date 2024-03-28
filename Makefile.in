@@ -29,8 +29,8 @@ endif
 umu/umu_version.json: umu/umu_version.json.in
 	$(info :: Updating $(@) )
 	cp $(<) $(<).tmp
-	sed 's|##UMU_VERSION##|$(shell git describe --always --long --tags)|g' -i $(<).tmp
-	sed 's|##REAPER_VERSION##|$(shell git describe --always --long --tags)|g' -i $(<).tmp
+	sed 's|@UMU_VERSION@|$(shell git describe --always --long --tags)|g' -i $(<).tmp
+	sed 's|@REAPER_VERSION@|$(shell git describe --always --long --tags)|g' -i $(<).tmp
 	mv $(<).tmp $(@)
 
 .PHONY: version
@@ -44,7 +44,7 @@ version-install: version
 
 $(OBJDIR)/.build-umu: | $(OBJDIR)
 	$(info :: Building umu )
-	sed 's|##INSTALL_PATH##|$(DATADIR)/$(INSTALLDIR)|g' umu/umu-run.in > $(OBJDIR)/umu-run
+	sed 's|@INSTALL_PATH@|$(DATADIR)/$(INSTALLDIR)|g' umu/umu-run.in > $(OBJDIR)/umu-run
 	touch $(@)
 
 .PHONY: umu
@@ -88,7 +88,7 @@ umu-install: version-install umu-dist-install umu-docs-install umu-bin-install
 # umu-launcher is separate to allow control over installing the bin target
 $(OBJDIR)/.build-umu-launcher: | $(OBJDIR)
 	$(info :: Building umu-launcher )
-	sed 's|##INSTALL_PATH##|$(DATADIR)/$(INSTALLDIR)|g' umu/umu-launcher/umu-run.in > $(OBJDIR)/umu-launcher-run
+	sed 's|@INSTALL_PATH@|$(DATADIR)/$(INSTALLDIR)|g' umu/umu-launcher/umu-run.in > $(OBJDIR)/umu-launcher-run
 	touch $(@)
 
 .PHONY: umu-launcher

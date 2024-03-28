@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
-##INSTALL_PATH##/umu_run.py "$@"
+@INSTALL_PATH@/umu_run.py "$@"
 

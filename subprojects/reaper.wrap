@@ -1,0 +1,8 @@
+[wrap-git]
+directory = reaper
+url = https://github.com/Plagman/reaper.git
+revision = head
+depth = 1
+
+[provide]
+program_names = reaper
